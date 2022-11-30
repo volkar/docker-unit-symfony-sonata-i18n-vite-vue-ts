@@ -1,0 +1,15 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+fos_ck_editor:
+    default_config: default
+    configs:
+        default:
+            contentsCss: 'static/ckeditor_nightshade_theme/contents.css'
+            skin: "nightshade,/static/ckeditor_nightshade_theme/"
+            toolbar:
+                - [Source, - Cut, Copy, Paste, PasteText, PasteFromWord, -, Undo, Redo, - Bold, Italic, Underline, Strike, Subscript, Superscript, -, CopyFormatting, RemoveFormat, - Maximize, ShowBlocks]
+                - [NumberedList, BulletedList, -, Outdent, Indent, -, Blockquote, -, JustifyLeft, JustifyCenter, JustifyRight, JustifyBlock, -, Link, Unlink, -, Table, HorizontalRule, Format, TextColor, BGColor]

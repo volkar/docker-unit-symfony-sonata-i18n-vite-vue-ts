@@ -1,0 +1,26 @@
+{% extends '@SonataAdmin/CRUD/list_outer_rows_mosaic.html.twig' %}
+
+{% block sonata_mosaic_background %}
+    {% if (object.picture is defined and object.picture) %}
+        {{ sonata_thumbnail(object.picture, 'admin') }}
+    {% elseif (object.photo is defined and object.photo) %}
+        {{ sonata_thumbnail(object.photo, 'admin') }}
+    {% elseif (object.image is defined and object.image) %}
+        {{ sonata_thumbnail(object.image, 'admin') }}
+    {% elseif (object.cover is defined and object.cover) %}
+        {{ sonata_thumbnail(object.cover, 'admin') }}
+    {% endif %}
+{% endblock %}
+
+{% block sonata_mosaic_default_view %}
+    <span class="mosaic-box-label label label-primary pull-right">#{{ admin.id(object) }}</span>
+{% endblock %}
+
+{% block sonata_mosaic_hover_view %}
+    <span class="mosaic-box-label label label-primary pull-right">#{{ admin.id(object) }}</span>
+    {{ meta.description }}
+{% endblock %}
+
+{% block sonata_mosaic_description %}
+    {{ meta.title|u.truncate(40) }}
+{% endblock %}

@@ -1,0 +1,43 @@
+sonata_media:
+    class:
+        media: App\Entity\SonataMediaMedia
+        gallery: App\Entity\SonataMediaGallery
+        gallery_item: App\Entity\SonataMediaGalleryItem
+
+    db_driver: doctrine_orm
+    default_context: default
+    contexts:
+        default:
+            providers:
+                - sonata.media.provider.image
+                # - sonata.media.provider.dailymotion
+                # - sonata.media.provider.youtube
+                # - sonata.media.provider.file
+                # - sonata.media.provider.vimeo
+
+            formats:
+                small: { resizer_options: { type: 'resize', maxside: 500 }, quality: 70 }
+                large: { resizer_options: { type: 'resize', maxside: 1500 }, quality: 80 }
+
+    admin_format: { resizer_options: { type: 'crop', width: 400, height: 200 }, quality: 60 }
+
+    cdn:
+        server:
+            path: /upload/media
+
+    filesystem:
+        local:
+            # Directory for uploads should be writable
+            directory: "%kernel.project_dir%/public/upload/media"
+            create: false
+
+    providers:
+        image:
+            service: sonata.media.provider.image
+            resizer: sonata.media.resizer.axiom # resizer: sonata.media.resizer.crop # sonata.media.resizer.square, sonata.media.resizer.crop
+            filesystem: sonata.media.filesystem.local
+            cdn: sonata.media.cdn.server
+            generator: sonata.media.generator.default
+            thumbnail: sonata.media.thumbnail.format
+            allowed_extensions: [ 'jpg', 'png', 'jpeg', 'webp' ]
+            allowed_mime_types: [ 'image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png', 'image/webp' ]

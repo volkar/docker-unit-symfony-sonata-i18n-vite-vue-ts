@@ -1,0 +1,70 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        }
+    },
+
+    "routes": [
+        {
+            "match": {
+                "uri": [
+                    "*.php",
+                    "*.php/*"
+                ]
+            },
+
+            "action": {
+                "pass": "applications/symfony/direct"
+            }
+        },
+        {
+            "action": {
+                "share": "/www/public$uri",
+                "fallback": {
+                    "pass": "applications/symfony/index"
+                }
+            }
+        }
+    ],
+
+    "applications": {
+        "symfony": {
+            "type": "php",
+            "targets": {
+                "direct": {
+                    "root": "/www/public/"
+                },
+
+                "index": {
+                    "root": "/www/public/",
+                    "script": "index.php"
+                }
+            },
+            "limits": {
+                "requests": 1000,
+                "timeout": 30
+            },
+            "processes": {
+                "max": 16,
+                "spare": 16,
+                "idle_timeout": 10
+            },
+            "options": {
+                "file": "/etc/php81/php.ini",
+                "admin": {
+                    "display_errors": "1",
+                    "memory_limit": "256M",
+                    "expose_php": "Off",
+                    "max_execution_time": "10",
+                    "upload_max_filesize": "8M",
+                    "date.timezone": "Europe/Helsinki",
+                    "opcache.preload": "/www/config/preload.php"
+                },
+                "user": {
+                    "display_errors": "1"
+                }
+            }
+        }
+    }
+}

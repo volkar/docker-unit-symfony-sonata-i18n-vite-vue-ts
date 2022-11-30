@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+    server:
+        build:
+          context: .
+          dockerfile: docker/alpine-unit/Dockerfile
+          args:
+              - GIT_EMAIL=${GIT_EMAIL}
+              - GIT_NAME=${GIT_NAME}
+        container_name: alpine-unit
+        ports:
+            - "80:80"
+            - "9003:9003"
+        volumes:
+            - .:/www:rw
+
+    postgres:
+        build:
+          context: ./docker/postgres
+        container_name: postgres-unit
+        restart: always
+        environment:
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        ports:
+            - ${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}
+        volumes:
+            - ./docker/postgres/data:/var/lib/postgresql/data:rw

@@ -1,0 +1,41 @@
+sonata_admin:
+    title: 'Admin'
+    dashboard:
+        blocks:
+            - { type: sonata.admin.block.admin_list, position: left }
+        groups:
+            content:
+                keep_open: true
+                icon: 'fas fa-list'
+                items:
+                    - admin.pages
+                    - admin.categories
+                    - admin.projects
+            media:
+                keep_open: true
+                icon: 'fas fa-image'
+                items:
+                    - sonata.media.admin.media
+                    - sonata.media.admin.gallery
+
+            home:
+                keep_open: true
+                icon: 'fas fa-home'
+                items:
+                    -   route: index
+                        label: Home
+
+    global_search:
+        empty_boxes: fade
+    assets:
+        extra_stylesheets:
+            - /static/sonata_nightshade_theme.css
+        extra_javascripts:
+            - bundles/fosckeditor/ckeditor.js
+    templates:
+        outer_list_rows_mosaic: 'admin/list_outer_rows_mosaic.html.twig'
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]

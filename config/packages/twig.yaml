@@ -1,0 +1,11 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    globals:
+      _version: '1.0'
+
+    form_themes:
+        - '@SonataFormatter/Form/formatter.html.twig'
+
+when@test:
+    twig:
+        strict_variables: true
