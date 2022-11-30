@@ -1,4 +1,4 @@
-## Docker configuration with PHP 8.1, NGINX Unit 1.28, PostgreSQL 14.2 and Symfony 6.1 for SPA (Single Page Application) development with Vue/Vite, Pinia and SonataAdmin.
+# Docker configuration with PHP 8.1, NGINX Unit 1.28, PostgreSQL 14.2 and Symfony 6.1 for SPA (Single Page Application) development with Vue/Vite, Pinia and SonataAdmin.
 
 SPA preview:
 ![SPA preview](https://github.com/volkar/docker-unit-symfony-sonata-i18n-vite-vue-ts/blob/main/preview.jpg?raw=true)
