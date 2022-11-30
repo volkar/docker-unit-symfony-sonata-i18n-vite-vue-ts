@@ -51,7 +51,7 @@ git clone https://github.com/volkar/docker-unit-symfony-sonata-i18n-vite-vue-ts.
 ```
 2. Go to the project's folder
 ```
-cd /path/to/docker-symfony-vite-vue-ts
+cd /path/to/docker-unit-symfony-sonata-i18n-vite-vue-ts
 ```
 3. Build and up project with Docker Compose
 ```
@@ -214,7 +214,7 @@ Ports mapped default:
 
 | Local | Container | Description |
 | - | - | - |
-| 80 | 80 | NGINX port |
+| 80 | 80 | NGINX Unit port |
 | 5432 | 5432 | PostgreSQL port |
 | 9003 | 9003 | PHPUnit port |
 
