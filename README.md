@@ -127,7 +127,7 @@ Config file `docker_configs/config.json` mapped to container's path `/www/docker
 ```
 curl -X PUT --data-binary @docker_configs/config.json --unix-socket /var/run/control.unit.sock http://localhost/config
 ```
-Command for view Unit's status (same requirements as above):
+Command for view Unit's status (same requirements as above, or use make command `make unit_status`):
 
 ```
 curl -X GET --unix-socket /var/run/control.unit.sock http://localhost/status/
