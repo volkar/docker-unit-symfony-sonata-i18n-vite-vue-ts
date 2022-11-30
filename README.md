@@ -47,7 +47,7 @@ Docker and Docker Compose can be installed with [Docker Desktop](https://www.doc
 
 1. Clone the project:
 ```
-git clone https://github.com/volkar/docker-symfony-vite-vue-ts.git
+git clone https://github.com/volkar/docker-unit-symfony-sonata-i18n-vite-vue-ts.git
 ```
 2. Go to the project's folder
 ```
@@ -119,6 +119,18 @@ Rebuild and up:
 docker-compose down -v --remove-orphans
 docker-compose rm -vsf
 docker-compose up -d --build
+```
+### Using Nginx Unit
+
+Config file `docker_configs/config.json` mapped to container's path `/www/docker_configs/config.json` and can be edited and updated in runtime by make command `make unit_conf` (must be executed under the root in container's /www folder), full command is:
+
+```
+curl -X PUT --data-binary @docker_configs/config.json --unix-socket /var/run/control.unit.sock http://localhost/config
+```
+Command for view Unit's status (same requirements as above):
+
+```
+curl -X GET --unix-socket /var/run/control.unit.sock http://localhost/status/
 ```
 
 ### Using PostgreSQL
